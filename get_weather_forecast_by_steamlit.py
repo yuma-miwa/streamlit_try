@@ -5,7 +5,7 @@ import json
 
 
 # フロントエンドを表示
-streamlit.title("おしえて！Bedrock")
+streamlit.title("どこの天気が知りたい")
 question = streamlit.text_input("質問を入力")
 button = streamlit.button("質問する")
 
@@ -20,17 +20,25 @@ button = streamlit.button("質問する")
 #         'modelArn': 'anthropic.claude-3-5-sonnet-20240620-v1:0'}})
 
 if button:
-    # 気象庁データの取得
-    jma_url = "https://www.jma.go.jp/bosai/forecast/data/forecast/130000.json"
-    jma_json = requests.get(jma_url).json()
+    # # 気象庁データの取得
+    # jma_url = "https://www.jma.go.jp/bosai/forecast/data/forecast/130000.json"
+    # jma_json = requests.get(jma_url).json()
 
-    # 取得したいデータを選ぶ
-    jma_date = jma_json[0]["timeSeries"][0]["timeDefines"][0]
-    jma_weather = jma_json[0]["timeSeries"][0]["areas"][0]["weathers"][0]
-    #jma_rainfall = jma_json["Feature"][0]["Property"]["WeatherList"]["Weather"][0]["Rainfall"]
-    # 全角スペースの削除
-    jma_weather = jma_weather.replace('　', '')
+    # # 取得したいデータを選ぶ
+    # jma_date = jma_json[0]["timeSeries"][0]["timeDefines"][0]
+    # jma_weather = jma_json[0]["timeSeries"][0]["areas"][0]["weathers"][0]
+    # #jma_rainfall = jma_json["Feature"][0]["Property"]["WeatherList"]["Weather"][0]["Rainfall"]
+    # # 全角スペースの削除
+    # jma_weather = jma_weather.replace('　', '')
 
-    # 回答を表示
-    #   streamlit.write(response['output']['text'])
-    streamlit.write(jma_weather)
+    # # 回答を表示
+    # #   streamlit.write(response['output']['text'])
+    # streamlit.write(jma_weather)
+    
+    API_URL = "https://weather.tsukumijima.net/api/forecast/{0}"
+
+    req_url = API_URL.format({'text': question})
+    res = requests.get(req_url).json()
+    title = res[0]["headlineText"]
+    streamlit.write(title)
+    
