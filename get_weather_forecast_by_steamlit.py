@@ -37,7 +37,7 @@ if button:
     
     API_URL = "https://weather.tsukumijima.net/api/forecast/city/{0}"
 
-    req_url = API_URL.format({'text': question})
+    req_url = API_URL.format(question)
     res = requests.get(req_url).json()
     title = res["description"]["bodyText"]
     streamlit.write(title)
