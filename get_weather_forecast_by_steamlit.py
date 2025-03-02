@@ -1,10 +1,8 @@
 # 外部ライブラリをインポート
-import boto3, streamlit
+import streamlit
 import requests
 import json
 
-# Bedrockクライアントを初期化
-bedrock = boto3.client('bedrock-agent-runtime')
 
 # フロントエンドを表示
 streamlit.title("おしえて！Bedrock")
