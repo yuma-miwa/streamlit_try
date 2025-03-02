@@ -35,10 +35,9 @@ if button:
     # #   streamlit.write(response['output']['text'])
     # streamlit.write(jma_weather)
     
-    API_URL = "https://weather.tsukumijima.net/api/forecast/{0}"
+    API_URL = "https://weather.tsukumijima.net/api/forecast/city/{0}"
 
     req_url = API_URL.format({'text': question})
     res = requests.get(req_url).json()
     title = res[0]["headlineText"]
     streamlit.write(title)
-    
