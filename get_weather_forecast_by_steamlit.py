@@ -8,8 +8,8 @@ import json
 streamlit.title("どこの天気が知りたい？")
 question = streamlit.text_input("地域コードを入力")
 button = streamlit.button("教えてもらう")
-areaCodeURL = streamlit.page_link("https://weather.tsukumijima.net/primary_area.xml", "地域コード")
-apiURL = streamlit.page_link("https://weather.tsukumijima.net/", "API仕様")
+streamlit.markdown("[地域コード一覧](https://weather.tsukumijima.net/primary_area.xml)")
+streamlit.markdown("[API仕様](https://weather.tsukumijima.net/)")
 
 if button:    
     API_URL = "https://weather.tsukumijima.net/api/forecast/city/{0}"
