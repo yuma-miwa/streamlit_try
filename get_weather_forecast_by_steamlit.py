@@ -39,5 +39,5 @@ if button:
 
     req_url = API_URL.format({'text': question})
     res = requests.get(req_url).json()
-    title = res["description"][0]["bodyText"][0]
+    title = res["description"]["bodyText"]
     streamlit.write(title)
